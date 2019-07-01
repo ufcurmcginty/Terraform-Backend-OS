@@ -19,6 +19,15 @@ Execute **create-tfm-backend.sh** while specifying:
 * ex: testuseatfmtfstate
 ### Key Vault Name
 * Key Vault that will sotre all terraform related secrets
+* A secret named **"terraform-backend-key"*** will also be created
+  * This will allow terraform to access the storage account
 * ex: testuseatfmkv
 ## Example: 
 source **create-tfm-backend.sh** eastus testuseatfmrg testuseatfmstac testuseatfmtfstate testuseatfmkv
+
+### Initialise terraform for AKS deployment
+* This step will intialize Terraform with the storage account as backend to store the tfstate file in the container created in the first step above
+* The tfstate will get its name from the resource group - the "rg"
+* ex: if "testuseatfmrg", then "testuseatfm"
+
+# Create a custom terraform service principal with least privilege to perform the AKS deployment
