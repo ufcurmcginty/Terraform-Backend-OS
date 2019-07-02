@@ -1,5 +1,9 @@
+__TL;DR: Recommended Usage:__
+1. create-tfm-backend.sh
+2. create-aad-server-app.sh
+3. 
 # Terraform-Backend-OS
-Non-terraform scripts to create backend for open source Terraform running in a container in Azure.
+Non-terraform scripts to create backend for Open Source Terraform running in a container in Azure.
 Backend consists of an Azure storage account, key vault, secrets, container, and Azure AD integration.
 
 # Create a Storage Account to manage terraform state for different clusters
@@ -31,3 +35,17 @@ source **create-tfm-backend.sh** eastus testuseatfmrg testuseatfmstac testuseatf
 * ex: if "testuseatfmrg", then "testuseatfm"
 
 # Create a custom terraform service principal with least privilege to perform the AKS deployment
+* *This script (create-tfm-sp.sh) will be kicked off automatically following the completion of create-tfm-backend.sh*
+* The script will interactively:
+ * Create the service principal (or resets the credentials if it already exists)
+ * Prompts to choose either a populated or empty provider.tf azurerm provider block
+ * Exports the environment variables if you selected an empty block (and display the commands)
+ * Display the az login command to log in as the service principal
+ * Export the TF_VAR_client_id and TF_VAR_client_secret to a local file (export_tf_vars.txt)
+  * And to the Azure Key Vault vreated previously
+ 
+ # Azure Active Directory Authorization
+* In order to enable Azure Active Directory authorization with Kubernetes, you need to create two applications:
+ * A server application, that will work with Azure Active Directory
+ * A client application, that will work with the server application
+* Multiple AKS clusters can use the same server application, but it’s recommended to have one client application per cluster.
