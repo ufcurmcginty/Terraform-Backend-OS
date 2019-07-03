@@ -4,8 +4,8 @@ __TL;DR: Recommended first time usage:__
 3. create-rancher-aks-mgmt.sh
 
 # Terraform-Backend-OS
-Non-terraform scripts to create backend for Open Source Terraform running in a container in Azure.
-Backend consists of an Azure storage account, key vault, secrets, container, and Azure AD integration.
+* Non-terraform scripts to create backend for Open Source Terraform running in a container in Azure.
+* Backend consists of an Azure storage account, key vault, secrets, container, and Azure AD integration.
 
 # Create a Storage Account to manage terraform state for different clusters
 Execute **create-tfm-backend.sh** while specifying:
@@ -14,7 +14,7 @@ Execute **create-tfm-backend.sh** while specifying:
 ### Resource group
 * The resource group will be created with the name specified in the region specified
 * ex: testuseatfmrg
-* tfm = terraform
+ * tfm = terraform
 ### Storage Account
 * This will be where the tfstate and terraform config files will be stored
 * This and every subsequent azure object will be created in the same resource group specified.
