@@ -1,7 +1,8 @@
-__TL;DR: Recommended Usage:__
-1. create-tfm-backend.sh
-2. create-aad-server-app.sh
-3. 
+__TL;DR: Recommended first time usage:__
+1. source create-tfm-backend.sh
+2. source create-aad-server-app.sh
+3. create-rancher-aks-mgmt.sh
+
 # Terraform-Backend-OS
 Non-terraform scripts to create backend for Open Source Terraform running in a container in Azure.
 Backend consists of an Azure storage account, key vault, secrets, container, and Azure AD integration.
@@ -46,6 +47,16 @@ source **create-tfm-backend.sh** eastus testuseatfmrg testuseatfmstac testuseatf
  
  # Azure Active Directory Authorization
 * In order to enable Azure Active Directory authorization with Kubernetes, you need to create two applications:
- * A server application, that will work with Azure Active Directory
- * A client application, that will work with the server application
+### A __server application__, that will work with Azure Active Directory
 * Multiple AKS clusters can use the same server application, but it’s recommended to have one client application per cluster.
+* __Once created an Azure AD Administrator needs to go to the Azure portal and click the _Grant permission_ button for this server app (Active Directory → App registrations (preview) → All applications → AKSAADServer
+* The __client application__ creation script (create-aad-client-app.sh) will kick off automatically after this one finishes
+
+### A __client application__, that will work with the server application
+* Usage: source create-aad-client-app.sh <azure ad client app name> <azure ad client url>
+ * Example: sh create-aad-client-app.sh AKSAADClient01 http://aksaadclient01
+
+# Deploy AKS Managment Cluster Running Rancher
+* Rancher mainly adds a unified UI for multiple cluster management 
+ * https://rancher.com/what-is-rancher/what-rancher-adds-to-kubernetes/
+* Usage: sh create-rancher-aks-mgmt.sh
