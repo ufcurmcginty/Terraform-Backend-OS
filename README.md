@@ -1,8 +1,8 @@
 __TL;DR: Recommended first time usage:__
 Execute the following without rebooting:
-1. source create-tfm-backend.sh
-2. source create-aad-server-app.sh
-3. create-rancher-aks-mgmt.sh
+1. sh create-tfm-backend.sh
+2. sh create-aad-server-app.sh
+3. sh create-rancher-aks-mgmt.sh
 
 # Terraform-Backend-OS
 * Non-terraform scripts to create backend for Open Source Terraform running in a container in Azure.
