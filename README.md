@@ -1,4 +1,5 @@
 __TL;DR: Recommended first time usage:__
+Execute the following without rebooting:
 1. source create-tfm-backend.sh
 2. source create-aad-server-app.sh
 3. create-rancher-aks-mgmt.sh
@@ -60,3 +61,5 @@ source **create-tfm-backend.sh** eastus testuseatfmrg testuseatfmstac testuseatf
 * Rancher mainly adds a unified UI for multiple cluster management 
  * https://rancher.com/what-is-rancher/what-rancher-adds-to-kubernetes/
 * Usage: sh create-rancher-aks-mgmt.sh
+
+
