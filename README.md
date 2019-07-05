@@ -29,7 +29,7 @@ Execute **create-tfm-backend.sh** while specifying:
   * This will allow terraform to access the storage account
 * ex: testuseatfmkv
 ## Example: 
-source **create-tfm-backend.sh** eastus testuseatfmrg testuseatfmstac testuseatfmtfstate testuseatfmkv
+sh **create-tfm-backend.sh** eastus testuseatfmrg testuseatfmstac testuseatfmtfstate testuseatfmkv
 
 ### Initialise terraform for AKS deployment
 * This step will intialize Terraform with the storage account as backend to store the tfstate file in the container created in the first step above
