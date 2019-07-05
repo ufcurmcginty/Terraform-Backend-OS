@@ -1,0 +1,8 @@
+
+
+export TF_VAR_client_id=$(az keyvault secret show --name TF-VAR-client-id --vault-name $KEY_VAULT_NAME --query value -o tsv)
+export TF_VAR_client_secret=$(az keyvault secret show --name TF-VAR-client-secret --vault-name $KEY_VAULT_NAME --query value -o tsv)
+export TF_VAR_rbac_server_app_id=$(az keyvault secret show --name TF-VAR-rbac-server-app-id --vault-name $KEY_VAULT_NAME --query value -o tsv)
+export TF_VAR_rbac_server_app_secret=$(az keyvault secret show --name TF-VAR-rbac-server-app-secret --vault-name $KEY_VAULT_NAME --query value -o tsv)
+export TF_VAR_rbac_client_app_id=$(az keyvault secret show --name TF-VAR-rbac-client-app-id --vault-name $KEY_VAULT_NAME --query value -o tsv)
+export TF_VAR_tenant_id=$(az keyvault secret show --name TF-VAR-tenant-id --vault-name $KEY_VAULT_NAME --query value -o tsv)
