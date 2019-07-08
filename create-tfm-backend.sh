@@ -4,13 +4,17 @@
 # We cannot create this storage account and blob container using Terraform itself since
 # we are creating the remote state storage for Terraform and Terraform needs this storage in terraform init phase.
 
-if [ $# -ne 4 ]
+if [ $# -ne 5 ]
 then
   echo "Usage: ./create-azure-storage-account.sh <location/region(eg. eastus)> <resource-group-name> <storage-account-name> <container-name> <key-vault-name>"
   echo "NOTE: Use the following azure cli commands to check the right account and to login to az first:"
-  echo "  az account list --output table                    => Check which Azure accounts you have."
-  echo "  az account set -s \"<your-azure-account-name>\"     => Set the right azure account."
   echo "  az login                                          => Login to azure cli."
+  echo "  az account list --output table                    => Check which Azure accounts you have."
+  echo "  az account set --subscription "UFCU NonProduction"     => Either set the Non Prod azure account."
+  echo "  for Dev and QA environments"
+  echo "  OR"
+  echo "  az account set --subscription "UFCU Production"     => Set the Prod azure account."
+  echo "  for Staging and Production environments"
   exit 1
 fi
 
@@ -76,4 +80,4 @@ echo "___________________________________________________________"
 export KEY_VAULT_NAME="$KEY_VAULT_NAME"
 
 echo "Creating Terraform Service Principal..."
-sh supplemental/create-tfm-sp.sh
+sh create-tfm-sp.sh
